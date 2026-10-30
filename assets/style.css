@@ -9,8 +9,9 @@
   --display: "Bagel Fat One", "Arial Rounded MT Bold", system-ui, sans-serif;
   --text: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
   --hand: "Gochi Hand", "Comic Sans MS", cursive;
-  --shadow-on-white: drop-shadow(0 26px 22px rgba(90, 14, 18, .28)) drop-shadow(0 6px 6px rgba(90, 14, 18, .18));
-  --shadow-on-red: drop-shadow(0 30px 26px rgba(40, 0, 4, .45)) drop-shadow(0 8px 8px rgba(40, 0, 4, .3));
+  /* shadows are baked into the food WebPs (CSS drop-shadow tiles/flickers on mobile Safari) */
+  --shadow-on-white: none;
+  --shadow-on-red: none;
   --radius: 36px;
   --gutter: clamp(16px, 4vw, 48px);
 }
@@ -120,15 +121,15 @@ a { color: inherit; }
 /* the bao sits bottom-right, only nibbling the corner of the final S */
 .hero__food {
   position: absolute; z-index: 2;
-  left: calc(50% + var(--fs) * .92); top: calc(var(--fs) * 1.38);
-  width: calc(var(--fs) * .9);
+  left: calc(50% + var(--fs) * .84); top: calc(var(--fs) * 1.34);
+  width: calc(var(--fs) * 1.06);
   transform: rotate(-8deg);
   filter: var(--shadow-on-red);
   animation: drop-in .9s cubic-bezier(.2, 1.4, .4, 1) .15s both;
 }
 .hero__side { position: absolute; z-index: 2; filter: var(--shadow-on-red); }
-.hero__side--left { width: min(13vw, 150px); left: max(2vw, calc(50% - 640px)); bottom: 4%; transform: rotate(-12deg); animation: drop-in .9s cubic-bezier(.2, 1.4, .4, 1) .35s both; }
-.hero__side--right { width: min(18vw, 260px); left: calc(50% + var(--fs) * .84); top: 0; transform: rotate(12deg); animation: drop-in .9s cubic-bezier(.2, 1.4, .4, 1) .5s both; }
+.hero__side--left { width: min(20vw, 236px); left: max(2vw, calc(50% - 640px)); bottom: -5%; transform: rotate(-12deg); animation: drop-in .9s cubic-bezier(.2, 1.4, .4, 1) .35s both; }
+.hero__side--right { width: min(21vw, 306px); left: calc(50% + var(--fs) * .8); top: 0; transform: rotate(12deg); animation: drop-in .9s cubic-bezier(.2, 1.4, .4, 1) .5s both; }
 .hero__lead { font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 600; max-width: 34ch; margin: clamp(24px, 3vw, 40px) auto 0; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 26px; }
 .hero__meta { margin-top: 22px; font-weight: 700; opacity: .92; }
@@ -156,7 +157,7 @@ a { color: inherit; }
 /* ---------- menu items ---------- */
 .items { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(36px, 5vw, 64px) clamp(20px, 4vw, 56px); margin-top: clamp(40px, 6vw, 80px); }
 .item { width: min(100%, 330px); display: flex; flex-direction: column; align-items: center; text-align: center; }
-.item__img { height: 250px; width: 100%; display: grid; place-items: center; margin-bottom: 14px; }
+.item__img { height: 295px; width: 100%; display: grid; place-items: center; margin-bottom: 14px; }
 .item__img img { height: inherit; width: 100%; object-fit: contain; filter: var(--shadow-on-white); transition: transform .35s cubic-bezier(.2, 1.4, .4, 1); }
 .on-red .item__img img { filter: var(--shadow-on-red); }
 .item:hover .item__img img { transform: scale(1.06) rotate(-3deg); }
@@ -165,13 +166,13 @@ a { color: inherit; }
 .item .extra { font-weight: 800; }
 
 .items--bowl .item { width: min(100%, 380px); }
-.items--bowl .item__img { height: 340px; }
+.items--bowl .item__img { height: 400px; }
 .items--snack .item { width: min(100%, 280px); }
-.items--snack .item__img { height: 280px; }
+.items--snack .item__img { height: 330px; }
 
 
 .sauces { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 14px 22px; margin: clamp(48px, 6vw, 72px) auto 0; max-width: 760px; text-align: center; }
-.sauces img { width: 74px; filter: var(--shadow-on-red); }
+.sauces img { width: 88px; filter: var(--shadow-on-red); }
 .sauces p { margin: 0; font-weight: 600; }
 .sauces strong { font-family: var(--display); font-weight: 400; font-size: 1.4rem; display: block; }
 
@@ -183,7 +184,7 @@ a { color: inherit; }
 
 /* ---------- sweet sushi ---------- */
 .sweet { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; max-width: 1180px; margin: clamp(30px, 5vw, 60px) auto 0; }
-.sweet__box img { width: 100%; max-width: 620px; margin: 0 auto; filter: var(--shadow-on-red); transform: rotate(-4deg); }
+.sweet__box img { width: 100%; max-width: 730px; margin: 0 auto; filter: var(--shadow-on-red); transform: rotate(-4deg); }
 .sweet__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
 .sweet__list li { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-bottom: 20px; border-bottom: 2px solid rgba(255, 255, 255, .35); }
 .sweet__list li:last-child { border-bottom: 0; }
@@ -215,7 +216,7 @@ a { color: inherit; }
 .lines strong { font-family: var(--display); font-weight: 400; font-size: 1.45rem; }
 .limos { display: flex; justify-content: center; align-items: flex-end; gap: clamp(10px, 3vw, 44px); margin-top: 26px; flex-wrap: wrap; }
 .limos figure { margin: 0; text-align: center; }
-.limos img { height: clamp(150px, 20vw, 230px); width: auto; margin: 0 auto 8px; filter: var(--shadow-on-white); transition: transform .3s cubic-bezier(.2, 1.4, .4, 1); }
+.limos img { height: clamp(178px, 23.6vw, 272px); width: auto; margin: 0 auto 8px; filter: var(--shadow-on-white); transition: transform .3s cubic-bezier(.2, 1.4, .4, 1); }
 .limos figure:hover img { transform: translateY(-8px) rotate(-5deg); }
 .limos figcaption { font-weight: 800; }
 .smoothies { display: grid; gap: 24px; margin-top: 18px; }
@@ -289,13 +290,13 @@ a { color: inherit; }
   .nav__logo img { height: 44px; }
   .hero { padding-top: 18px; }
   .hero__stage { --fs: 33vw; }
-  .hero__side--left { width: 11vw; left: 1vw; bottom: -6%; }
-  .hero__side--right { width: 22vw; }
+  .hero__side--left { width: 17vw; left: 1vw; bottom: -6%; }
+  .hero__side--right { width: 26vw; }
   .doodle--note, .doodle--heart, .doodle--stars { display: none; }
   .burst { width: 76px; font-size: .95rem; }
   #menu .burst { top: -64px !important; right: 4px !important; }
-  .item__img { height: 210px; }
-  .items--bowl .item__img { height: 280px; }
+  .item__img { height: 248px; }
+  .items--bowl .item__img { height: 330px; }
   .sweet__list li { gap: 12px; }
 }
 @media (max-width: 420px) {
@@ -307,15 +308,15 @@ a { color: inherit; }
 @media (max-width: 1023px) {
   /* narrow screens: no room right of the S, so the bao drops below it */
   .hero__stage { padding-bottom: calc(var(--fs) * .8); }
-  .hero__food { left: calc(50% + var(--fs) * .25); top: calc(var(--fs) * 1.5); width: calc(var(--fs) * 1.15); }
+  .hero__food { left: calc(50% + var(--fs) * .14); top: calc(var(--fs) * 1.45); width: calc(var(--fs) * 1.36); }
   .doodle--note, .doodle--heart { display: none; }
 }
 @media (max-width: 759px) {
   /* phone: title pushed down under the bowl, bottle beside the B, bao tucked against the S */
   .hero__stage { padding-top: calc(var(--fs) * .42); padding-bottom: calc(var(--fs) * .66); }
-  .hero__side--right { top: calc(var(--fs) * .16); left: calc(50% + var(--fs) * .72); }
-  .hero__side--left { top: calc(var(--fs) * 1.2); bottom: auto; left: 0; }
-  .hero__food { left: calc(50% + var(--fs) * .36); top: calc(var(--fs) * 1.84); width: calc(var(--fs) * 1.05); }
+  .hero__side--right { top: calc(var(--fs) * .13); left: calc(50% + var(--fs) * .68); }
+  .hero__side--left { top: calc(var(--fs) * 1.17); bottom: auto; left: -2vw; }
+  .hero__food { left: calc(50% + var(--fs) * .26); top: calc(var(--fs) * 1.8); width: calc(var(--fs) * 1.24); }
 }
 
 @media (prefers-reduced-motion: reduce) {
