@@ -301,6 +301,13 @@ a { color: inherit; }
   .hero__food { left: calc(50% + var(--fs) * .25); top: calc(var(--fs) * 1.5); width: calc(var(--fs) * 1.15); }
   .doodle--note, .doodle--heart { display: none; }
 }
+@media (max-width: 759px) {
+  /* phone: title pushed down under the bowl, bottle beside the B, bao tucked against the S */
+  .hero__stage { padding-top: calc(var(--fs) * .42); padding-bottom: calc(var(--fs) * .66); }
+  .hero__side--right { top: -2%; }
+  .hero__side--left { top: calc(var(--fs) * 1.2); bottom: auto; left: 0; }
+  .hero__food { left: calc(50% + var(--fs) * .36); top: calc(var(--fs) * 1.84); width: calc(var(--fs) * 1.05); }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
