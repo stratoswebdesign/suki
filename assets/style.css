@@ -15,6 +15,15 @@
   --gutter: clamp(16px, 4vw, 48px);
 }
 
+/* Wide-gamut screens (iPhone, modern Android, MacBook): same hue, but using the
+   extra P3 saturation so the red pops like on a standard monitor. */
+@media (color-gamut: p3) {
+  :root {
+    --red: color(display-p3 0.66 0.11 0.14);
+    --red-deep: color(display-p3 0.5 0.07 0.1);
+  }
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
@@ -119,7 +128,7 @@ a { color: inherit; }
 }
 .hero__side { position: absolute; z-index: 2; filter: var(--shadow-on-red); }
 .hero__side--left { width: min(13vw, 150px); left: max(2vw, calc(50% - 640px)); bottom: 4%; transform: rotate(-12deg); animation: drop-in .9s cubic-bezier(.2, 1.4, .4, 1) .35s both; }
-.hero__side--right { width: min(18vw, 260px); right: max(1vw, calc(50% - 670px)); top: 0; transform: rotate(12deg); animation: drop-in .9s cubic-bezier(.2, 1.4, .4, 1) .5s both; }
+.hero__side--right { width: min(18vw, 260px); left: calc(50% + var(--fs) * .84); top: 0; transform: rotate(12deg); animation: drop-in .9s cubic-bezier(.2, 1.4, .4, 1) .5s both; }
 .hero__lead { font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 600; max-width: 34ch; margin: clamp(24px, 3vw, 40px) auto 0; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 26px; }
 .hero__meta { margin-top: 22px; font-weight: 700; opacity: .92; }
@@ -281,7 +290,7 @@ a { color: inherit; }
   .hero { padding-top: 18px; }
   .hero__stage { --fs: 33vw; }
   .hero__side--left { width: 11vw; left: 1vw; bottom: -6%; }
-  .hero__side--right { width: 22vw; right: -1vw; top: -5%; }
+  .hero__side--right { width: 22vw; }
   .doodle--note, .doodle--heart, .doodle--stars { display: none; }
   .burst { width: 76px; font-size: .95rem; }
   #menu .burst { top: -64px !important; right: 4px !important; }
@@ -304,7 +313,7 @@ a { color: inherit; }
 @media (max-width: 759px) {
   /* phone: title pushed down under the bowl, bottle beside the B, bao tucked against the S */
   .hero__stage { padding-top: calc(var(--fs) * .42); padding-bottom: calc(var(--fs) * .66); }
-  .hero__side--right { top: -2%; }
+  .hero__side--right { top: calc(var(--fs) * .16); left: calc(50% + var(--fs) * .72); }
   .hero__side--left { top: calc(var(--fs) * 1.2); bottom: auto; left: 0; }
   .hero__food { left: calc(50% + var(--fs) * .36); top: calc(var(--fs) * 1.84); width: calc(var(--fs) * 1.05); }
 }
