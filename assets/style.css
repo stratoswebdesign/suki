@@ -105,27 +105,29 @@ a { color: inherit; }
 
 /* ---------- hero ---------- */
 .hero { position: relative; overflow: hidden; padding: clamp(28px, 5vw, 60px) var(--gutter) clamp(56px, 8vw, 96px); text-align: center; }
-.hero__stage { position: relative; display: grid; place-items: center; }
+.hero__stage { --fs: min(27vw, 24rem); position: relative; display: grid; place-items: center; padding-bottom: calc(var(--fs) * .08); }
 .hero__word { position: relative; z-index: 1; }
-.hero__word .line { display: block; font-size: clamp(5.4rem, 27vw, 24rem); }
+.hero__word .line { display: block; font-size: var(--fs); }
+/* the bao sits bottom-right, only nibbling the corner of the final S */
 .hero__food {
-  position: absolute; z-index: 2; left: 50%; top: 50%;
-  width: min(40vw, 540px);
-  transform: translate(-50%, -32%) rotate(-6deg);
+  position: absolute; z-index: 2;
+  left: calc(50% + var(--fs) * .92); top: calc(var(--fs) * 1.38);
+  width: calc(var(--fs) * .9);
+  transform: rotate(-8deg);
   filter: var(--shadow-on-red);
   animation: drop-in .9s cubic-bezier(.2, 1.4, .4, 1) .15s both;
 }
 .hero__side { position: absolute; z-index: 2; filter: var(--shadow-on-red); }
 .hero__side--left { width: min(13vw, 150px); left: max(2vw, calc(50% - 640px)); bottom: 4%; transform: rotate(-12deg); animation: drop-in .9s cubic-bezier(.2, 1.4, .4, 1) .35s both; }
-.hero__side--right { width: min(26vw, 330px); right: max(1vw, calc(50% - 680px)); top: 2%; transform: rotate(14deg); animation: drop-in .9s cubic-bezier(.2, 1.4, .4, 1) .5s both; }
+.hero__side--right { width: min(18vw, 260px); right: max(1vw, calc(50% - 670px)); top: 0; transform: rotate(12deg); animation: drop-in .9s cubic-bezier(.2, 1.4, .4, 1) .5s both; }
 .hero__lead { font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 600; max-width: 34ch; margin: clamp(24px, 3vw, 40px) auto 0; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 26px; }
 .hero__meta { margin-top: 22px; font-weight: 700; opacity: .92; }
 .doodle { position: absolute; z-index: 3; color: var(--white); pointer-events: none; }
 .doodle--note { font-family: var(--hand); font-size: clamp(1.2rem, 2.2vw, 1.9rem); line-height: 1; transform: rotate(-8deg); left: max(2vw, calc(50% - 690px)); top: -3%; text-align: left; }
 .doodle--note svg { width: 70px; margin: 6px 0 0 40px; }
-.doodle--stars { right: max(8vw, calc(50% - 470px)); bottom: 14%; width: clamp(48px, 7vw, 90px); }
-.doodle--heart { left: 22%; bottom: 8%; width: clamp(34px, 4vw, 54px); transform: rotate(-14deg); }
+.doodle--stars { left: max(16vw, calc(50% - var(--fs) * 1.2)); bottom: -2%; width: clamp(48px, 6vw, 84px); }
+.doodle--heart { left: calc(50% + var(--fs) * .55); top: 2%; width: clamp(34px, 4vw, 54px); transform: rotate(-14deg); }
 
 @keyframes drop-in {
   from { opacity: 0; translate: 0 -60px; scale: .9; }
@@ -277,11 +279,9 @@ a { color: inherit; }
   .nav__links .hide-sm { display: none; }
   .nav__logo img { height: 44px; }
   .hero { padding-top: 18px; }
-  .hero__stage { padding-bottom: 33vw; }
-  .hero__food { width: 62vw; }
-  .hero__word .line { font-size: 33vw; }
+  .hero__stage { --fs: 33vw; }
   .hero__side--left { width: 11vw; left: 1vw; bottom: -6%; }
-  .hero__side--right { width: 27vw; right: -2vw; top: -6%; }
+  .hero__side--right { width: 22vw; right: -1vw; top: -5%; }
   .doodle--note, .doodle--heart, .doodle--stars { display: none; }
   .burst { width: 76px; font-size: .95rem; }
   #menu .burst { top: -64px !important; right: 4px !important; }
@@ -296,8 +296,9 @@ a { color: inherit; }
 }
 
 @media (max-width: 1023px) {
-  .hero__stage { padding-bottom: 27vw; }
-  .hero__food { width: 46vw; top: 56%; transform: translate(-50%, -10%) rotate(-6deg); }
+  /* narrow screens: no room right of the S, so the bao drops below it */
+  .hero__stage { padding-bottom: calc(var(--fs) * .8); }
+  .hero__food { left: calc(50% + var(--fs) * .25); top: calc(var(--fs) * 1.5); width: calc(var(--fs) * 1.15); }
   .doodle--note, .doodle--heart { display: none; }
 }
 
